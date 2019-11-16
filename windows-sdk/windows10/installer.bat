@@ -449,12 +449,54 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 :: Download Chrome installer
 echo "Downloading Chrome installer"
 start "C:\Program Files (x86)\Internet Explorer\iexplore.exe" "https://www.google.com/chrome/thank-you.html?statcb=1&installdataindex=defaultbrowser#"
+powershell -command "(New-Object -comObject Shell.Application).Windows() | foreach-object {$_.quit()}; Get-Process | Where-Object {$_.MainWindowTitle -ne \"\"} | stop-process"
 :END
 endlocal
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
 :: ##########################################################################################
 :: ##########################################################################################
+
+
+
+
+
+
+
+
+
+
+
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+:: -----------------------------------------------------------------------------------------
+:: prompt user to close all windows
+echo "Would you like to close all windows?"
+@echo off
+setlocal
+:PROMPT
+SET /P AREYOUSURE=Are you sure (Y/[N])?
+IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
+:: -----------------------------------------------------------------------------------------
+
+
+
+:: -----------------------------------------------------------------------------------------
+:: Download Chrome installer
+echo "Attempting to close all windows"
+powershell -command "(New-Object -comObject Shell.Application).Windows() | foreach-object {$_.quit()}; Get-Process | Where-Object {$_.MainWindowTitle -ne \"\"} | stop-process"
+:END
+endlocal
+:: -----------------------------------------------------------------------------------------
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+
+
+
+
+
 
 
 
