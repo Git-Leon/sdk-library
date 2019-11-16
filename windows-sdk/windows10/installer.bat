@@ -408,7 +408,7 @@ reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers
 reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "./gitbash-installer.exe" /d "WIN10"
 start gitbash-installer.exe
 
-chrome "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
+chrome "https://gitforwindows.org/"
 
 :END
 endlocal
