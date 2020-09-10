@@ -4,5 +4,5 @@ set branch=%2
 shift
 shift
 git add .
-git commit -m /u %commitMessage%
+git commit -m %commitMessage%
 git push -u origin %branch%
