@@ -193,6 +193,49 @@ endlocal
 
 
 
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+:: -----------------------------------------------------------------------------------------
+:: prompt user to install git-bash
+echo "Would you like to download and install 'git-bash'?"
+@echo off
+setlocal
+:PROMPT
+SET /P AREYOUSURE=Are you sure (Y/[N])?
+IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
+
+
+
+:: -----------------------------------------------------------------------------------------
+:: install 'Git Bash' installer to clone projects from command line
+echo "downloading Git-Bash installer..."
+curl -o "%cd%\gitbash-installer.exe" "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
+
+echo "Installing GitBash"
+set __compat_layer=win10
+reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "./gitbash-installer.exe" /T REG_SZ /D CompatibilityMode /F
+reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "./gitbash-installer.exe" /d "WIN10"
+start gitbash-installer.exe
+
+start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "https://gitforwindows.org/"
+
+:END
+endlocal
+:: -----------------------------------------------------------------------------------------
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,25 +412,6 @@ endlocal
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :: ##########################################################################################
 :: ##########################################################################################
 :: ##########################################################################################
@@ -433,6 +457,36 @@ endlocal
 
 
 
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+:: -----------------------------------------------------------------------------------------
+:: prompt user to install git-bash
+echo "Would you like to download and install 'IntelliJ Community Edition??"
+@echo off
+setlocal
+:PROMPT
+SET /P AREYOUSURE=Are you sure (Y/[N])?
+IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
+
+
+
+:: -----------------------------------------------------------------------------------------
+:: install 'Git Bash' installer to clone projects from command line
+echo "downloading IntelliJ Community Edition installer..."
+curl -o "%cd%\intellij-installer.exe" "https://download-cf.jetbrains.com/idea/ideaIU-2020.2.1.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
+
+echo "Installing IntelliJ Community edition"
+start intellij-installer.exe
+
+:END
+endlocal
+:: -----------------------------------------------------------------------------------------
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+
+
 
 
 
@@ -448,7 +502,7 @@ endlocal
 :: ##########################################################################################
 :: -----------------------------------------------------------------------------------------
 :: prompt user to install git-bash
-echo "Would you like to download and install 'git-bash'?"
+echo "Would you like to download and install 'PyCharm Professional Edition'?"
 @echo off
 setlocal
 :PROMPT
@@ -459,16 +513,11 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 
 :: -----------------------------------------------------------------------------------------
 :: install 'Git Bash' installer to clone projects from command line
-echo "downloading Git-Bash installer..."
-curl -o "%cd%\gitbash-installer.exe" "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
+echo "downloading PyCharm Professional Edition installer..."
+curl -o "%cd%\pycharm-installer.exe" "https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.2.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
 
-echo "Installing GitBash"
-set __compat_layer=win10
-reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "./gitbash-installer.exe" /T REG_SZ /D CompatibilityMode /F
-reg Add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "./gitbash-installer.exe" /d "WIN10"
-start gitbash-installer.exe
-
-start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "https://gitforwindows.org/"
+echo "Installing PyCharm Professional Edition"
+start pycharm-installer.exe
 
 :END
 endlocal
@@ -476,6 +525,10 @@ endlocal
 :: ##########################################################################################
 :: ##########################################################################################
 :: ##########################################################################################
+
+
+
+
 
 
 
@@ -526,39 +579,6 @@ endlocal
 
 
 
-
-
-
-
-
-:: ##########################################################################################
-:: ##########################################################################################
-:: ##########################################################################################
-:: -----------------------------------------------------------------------------------------
-:: prompt user to install git-bash
-echo "Would you like to download and install 'IntelliJ Community Edition??"
-@echo off
-setlocal
-:PROMPT
-SET /P AREYOUSURE=Are you sure (Y/[N])?
-IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
-
-
-
-:: -----------------------------------------------------------------------------------------
-:: install 'Git Bash' installer to clone projects from command line
-echo "downloading IntelliJ Community Edition installer..."
-curl -o "%cd%\intellij-installer.exe" "https://download-cf.jetbrains.com/idea/ideaIU-2020.2.1.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
-
-echo "Installing intellij"
-start intellij-installer.exe
-
-:END
-endlocal
-:: -----------------------------------------------------------------------------------------
-:: ##########################################################################################
-:: ##########################################################################################
-:: ##########################################################################################
 
 
 

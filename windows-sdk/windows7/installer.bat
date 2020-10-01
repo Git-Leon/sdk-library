@@ -378,7 +378,7 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 :: -----------------------------------------------------------------------------------------
 :: install 'Git Bash' installer to clone projects from command line
 echo "downloading IntelliJ Community Edition installer..."
-curl -o "%cd%\intellij-installer.exe" "https://download-cf.jetbrains.com/idea/ideaIU-2020.2.1.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
+"./resources/curl/bin/curl.exe" -o "%cd%\intellij-installer.exe" "https://download-cf.jetbrains.com/idea/ideaIU-2020.2.1.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
 
 echo "Installing intellij"
 start intellij-installer.exe
@@ -391,6 +391,44 @@ endlocal
 :: ##########################################################################################
 
 
+
+
+
+
+
+
+
+
+
+
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
+:: -----------------------------------------------------------------------------------------
+:: prompt user to install git-bash
+echo "Would you like to download and install 'PyCharm Professional Edition'?"
+@echo off
+setlocal
+:PROMPT
+SET /P AREYOUSURE=Are you sure (Y/[N])?
+IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
+
+
+
+:: -----------------------------------------------------------------------------------------
+:: install 'Git Bash' installer to clone projects from command line
+echo "downloading PyCharm Professional Edition installer..."
+"./resources/curl/bin/curl.exe" -o "%cd%\pycharm-installer.exe" "https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.2.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" --compressed -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
+
+echo "Installing PyCharm Professional Edition"
+start pycharm-installer.exe
+
+:END
+endlocal
+:: -----------------------------------------------------------------------------------------
+:: ##########################################################################################
+:: ##########################################################################################
+:: ##########################################################################################
 
 
 
