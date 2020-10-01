@@ -513,7 +513,7 @@ endlocal
 :: ##########################################################################################
 :: -----------------------------------------------------------------------------------------
 :: prompt user to install git-bash
-echo "Would you like to download and install 'PyCharm Professional Edition'?"
+echo "Would you like to download and install 'PyCharm Community Edition'?"
 @echo off
 setlocal
 :PROMPT
@@ -524,10 +524,10 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 
 :: -----------------------------------------------------------------------------------------
 :: install 'Git Bash' installer to clone projects from command line
-echo "downloading PyCharm Professional Edition installer..."
-curl -o "%cd%\pycharm-installer.exe" "https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.2.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" -H "Referer: https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows" -H "Connection: keep-alive" -H "Cookie: _gcl_au=1.1.1556281742.1599423447; _ga=GA1.1.1454185254.1599423448; _gid=GA1.2.2076224765.1599423448; _ga_TNKGS6FGXX=GS1.1.1599423447.1.1.1599423467.0" -H "Upgrade-Insecure-Requests: 1"
+echo "downloading PyCharm Community Edition installer..."
+curl -o "%cd%\pycharm-installer.exe" "https://download-cf.jetbrains.com/python/pycharm-community-2020.2.2.exe" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.5" -H "Referer: https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&code=PCC" -H "Connection: keep-alive" -H "Cookie: _ga=GA1.1.594083364.1573664930; _hjid=71889476-ad4a-4ac6-adbf-5b18f197ce6e; _ga_TNKGS6FGXX=GS1.1.1601590894.6.1.1601590896.58; _gcl_au=1.1.996650656.1596036073; _ga_1QPM2PL8QR=GS1.1.1601580227.1.0.1601580227.0; _gid=GA1.2.1807665973.1601580228; _gat_UA-47631155-3=1; _mkto_trk=id:426-QVD-114&token:_mch-jetbrains.com-1601590894765-43628; _fbp=fb.1.1601590894939.762435895; _uetsid=d006bdc0041b11eba84347b1f8af49b0; _uetvid=d006c2a0041b11eb963d6d7533874fca" -H "Upgrade-Insecure-Requests: 1"
 
-echo "Installing PyCharm Professional Edition"
+echo "Installing PyCharm Community Edition"
 start pycharm-installer.exe
 
 :END
