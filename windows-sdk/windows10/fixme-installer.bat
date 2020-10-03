@@ -1,5 +1,5 @@
-GOTO:MAIN
 @ECHO OFF
+GOTO:MAIN
 
 
 
@@ -19,7 +19,7 @@ GOTO:MAIN
         SET curlExecutionStatement = "curl -o '%cd%\%executableApplication%' '%executableUrl%'"    
         
         call:installApplication "%applicationName%" "%curlExecutionStatement%"
-    endlocal
+    ENDLOCAL
 EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
@@ -54,19 +54,18 @@ EXIT /B 0
 
         ECHO "Would you like to download and install '%applicationName%'?"
         :PROMPT
-            SET /P AREYOUSURE="Are you sure (Y/[N])?"
-            IF /I %AREYOUSURE% NEQ "Y" GOTO END
-
-
-            :: -----------------------------------------------------------------------------------------
-            :: install 'python' installer to run 'python' utilities.
+            SET /P areYouSure="Are you sure (Y/[N])?"
+            IF /I "%areYouSure%" EQU "Y" GOTO DOWNLOAD
+            IF /I "%areYouSure%" EQU "y" GOTO DOWNLOAD
+            IF /I "%areYouSure%" NEQ "Y" GOTO END
+        :DOWNLOAD
             ECHO "downloading %applicationName% installer..."
             %curlExecutionStatement%
 
             ECHO "Installing %applicationName%"
-            start %executableApplication%
+            START %executableApplication%
         :END
-    endlocal
+    ENDLOCAL
 EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
