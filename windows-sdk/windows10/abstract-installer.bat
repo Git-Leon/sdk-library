@@ -59,7 +59,7 @@ GOTO:MAIN
         SET applicationName = %~1
         SET executableApplication = %applicationName%.exe
         SET executableUrl = %~2
-        SET curlExecutionStatement = curl -o "%cd%\%executableApplication%" "%executableUrl%"
+        SET curlExecutionStatement = "curl -o '%cd%\%executableApplication%' '%executableUrl%'"
         call:installApplication %applicationName% %curlExecutionStatement%
     endlocal
 EXIT /B 0
@@ -86,7 +86,9 @@ EXIT /B 0
         SET applicationName = %~1
         SET executableApplication = %applicationName%.exe
         SET curlExecutionStatement = %~2
-        SET curlExecutionStatement = curl -o "%cd%\%executableApplication%" "%executableUrl%"
+        :: echo %applicationName%
+        :: echo %executableApplication%
+        :: echo %curlExecutionStatement%
         
         echo "Would you like to download and install '%applicationName%'?"
         :PROMPT
@@ -114,13 +116,13 @@ EXIT /B 0
 
 
 :MAIN
-call:defaultInstallApplication installer_pythonv3.7.3 https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe
-call:defaultInstallApplication installer_node-v10.16.0-x64 https://nodejs.org/dist/v10.16.0/node-v10.16.0-x64.msi
-call:defaultInstallApplication installer_npp-v7.7.1 https://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.exe
-call:defaultInstallApplication installer_awesomium-v1.6.6 http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe
-call:defaultInstallApplication installer_markdownpad2 http://markdownpad.com/download/markdownpad2-setup.exe
-call:defaultInstallApplication installer_vscode https://az764295.vo.msecnd.net/stable/2213894ea0415ee8c85c5eea0d0ff81ecc191529/VSCodeUserSetup-ia32-1.36.1.exe
-call:defaultInstallApplication installer_git-2.23.0-x64 https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe
+call:defaultInstallApplication "installer_pythonv3.7.3" "https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe"
+call:defaultInstallApplication "installer_node-v10.16.0-x64" "https://nodejs.org/dist/v10.16.0/node-v10.16.0-x64.msi"
+call:defaultInstallApplication "installer_npp-v7.7.1" "https://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.exe"
+call:defaultInstallApplication "installer_awesomium-v1.6.6" "http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe"
+call:defaultInstallApplication "installer_markdownpad2" "http://markdownpad.com/download/markdownpad2-setup.exe"
+call:defaultInstallApplication "installer_vscode" "https://az764295.vo.msecnd.net/stable/2213894ea0415ee8c85c5eea0d0ff81ecc191529/VSCodeUserSetup-ia32-1.36.1.exe"
+call:defaultInstallApplication "installer_git-2.23.0-x64" "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-64-bit.exe"
 
 
 
