@@ -1,6 +1,5 @@
-GOTO:MAIN
 @ECHO OFF
-
+GOTO:MAIN
 
 
 
@@ -10,28 +9,12 @@ GOTO:MAIN
 :: -----------------------------------------------------------------------------------------
 :: prompt user to install 'some application'
 :defaultInstallApplication
-    ::@ECHO OFF
-    ECHO default install app
-    SETLOCAL ENABLEDELAYEDEXPANSION
-        SET applicationName = %1
-        SET executableApplication = %applicationName%.exe
-        SET executableUrl = %2
-        SET curlExecutionStatement = "curl -o '%cd%\%executableApplication%' '%executableUrl%'"
-        
-        ECHO %applicationName%
-        ECHO %executableApplication%
-        ECHO %executableUrl%
-        ECHO %curlExecutionStatement%        
-        
-        call:installApplication "%applicationName%" "%curlExecutionStatement%"
-    endlocal
+    call:installApplication "%~1" "curl -o '%cd%\%~1.exe' '%~2'"
 EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
 :: ##########################################################################################
 :: ##########################################################################################
-
-
 
 
 
@@ -47,18 +30,8 @@ EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: prompt user to install 'some application'
 :installApplication
-    ::@ECHO OFF
-    ECHO install app
-    SETLOCAL ENABLEDELAYEDEXPANSION
-
-        SET applicationName = %~1
-        SET executableApplication = %applicationName%.exe
-        SET curlExecutionStatement = %~2
-        :: ECHO %applicationName%
-        :: ECHO %executableApplication%
-        :: ECHO %curlExecutionStatement%
-        
-        ECHO "Would you like to download and install '%applicationName%'?"
+    @ECHO OFF
+        ECHO "Would you like to download and install '%~1'?"
         :PROMPT
             SET /P AREYOUSURE="Are you sure (Y/[N])?"
             IF /I %AREYOUSURE% NEQ "Y" GOTO END
@@ -66,11 +39,11 @@ EXIT /B 0
 
             :: -----------------------------------------------------------------------------------------
             :: install 'python' installer to run 'python' utilities.
-            ECHO "downloading %applicationName% installer..."
-            %curlExecutionStatement%
+            ECHO "downloading %~1 installer..."
+            %~2
 
-            ECHO "Installing %applicationName%"
-            start %executableApplication%
+            ECHO "Installing %~1"
+            start %~1.exe
         :END
     endlocal
 EXIT /B 0
@@ -78,6 +51,11 @@ EXIT /B 0
 :: ##########################################################################################
 :: ##########################################################################################
 :: ##########################################################################################
+
+
+
+
+
 
 
 
