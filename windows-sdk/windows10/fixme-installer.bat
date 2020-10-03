@@ -12,12 +12,12 @@ GOTO:MAIN
 :defaultInstallApplication
     ::@ECHO OFF
     SETLOCAL ENABLEDELAYEDEXPANSION
-        SET applicationName=%1
+        SET applicationName=%~1
         SET executableApplication=%applicationName%.exe
-        SET executableUrl = %~2
-        SET curlExecutionStatement="curl -o '%cd%\%executableApplication%' '%executableUrl%'"    
+        SET executableUrl=%~2
+        SET curlExecutionStatement="curl -o %cd%\%executableApplication% %executableUrl%"
         
-        call:installApplication "%applicationName%" "%curlExecutionStatement%"
+        call:installApplication %applicationName% %curlExecutionStatement%
     ENDLOCAL
 EXIT /B 0
 :: -----------------------------------------------------------------------------------------
@@ -47,9 +47,9 @@ EXIT /B 0
 :installApplication
     ::@ECHO OFF
     SETLOCAL ENABLEDELAYEDEXPANSION
-        SET applicationName = %~1
-        SET executableApplication = %applicationName%.exe
-        SET curlExecutionStatement = %~2
+        SET applicationName=%~1
+        SET executableApplication=%applicationName%.exe
+        SET curlExecutionStatement=%~2
 
         ECHO "Would you like to download and install '%applicationName%'?"
         :PROMPT
