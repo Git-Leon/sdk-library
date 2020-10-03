@@ -30,20 +30,20 @@ EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: prompt user to install 'some application'
 :installApplication
-    ECHO installApplication
     @ECHO OFF
-        ECHO "Would you like to download and install '%~1'?"
-        :PROMPT
-            SET /P AREYOUSURE=Are you sure (Y/[N])?
-            IF /I %AREYOUSURE% NEQ "Y" GOTO END
+    ECHO "Would you like to download and install '%~1'?"
+    :PROMPT
+        SET /P AREYOUSURE="Are you sure (Y/[N])?"
+        IF /I %AREYOUSURE% EQU "Y" GOTO DOWNLOAD
+        IF /I %AREYOUSURE% NEQ "Y" GOTO DOWNLOAD
+    :DOWNLOAD
+        ECHO "downloading %~1 installer..."
+        %~2
 
-            ECHO "downloading %~1 installer..."
-            %~2
-
-            ECHO "Installing %~1"
-            start %~1.exe
-        :END
-    ENDLOCAL
+        ECHO "Installing %~1"
+        start %~1.exe
+    :END
+        ECHO "skipping %~1 installer..."
 EXIT /B 0
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
