@@ -34,8 +34,9 @@ EXIT /B 0
     ECHO "Would you like to download and install '%~1'?"
     :PROMPT
         SET /P AREYOUSURE="Are you sure (Y/[N])?"
-        IF /I %AREYOUSURE% EQU "Y" GOTO DOWNLOAD
-        IF /I %AREYOUSURE% NEQ "Y" GOTO DOWNLOAD
+        IF /I "%AREYOUSURE%" EQU "Y" GOTO DOWNLOAD
+        IF /I "%AREYOUSURE%" EQU "y" GOTO DOWNLOAD
+        IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
     :DOWNLOAD
         ECHO "downloading %~1 installer..."
         %~2
