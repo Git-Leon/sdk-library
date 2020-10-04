@@ -1,51 +1,12 @@
 :: ##########################################################################################
-:: ##########################################################################################
-:: ##########################################################################################
 :: -----------------------------------------------------------------------------------------
 :: rename bin
-ren "./resources/curl/binn/" "bin"
-
-:: configure aliases
-@DOSKEY unzip =  "./resources/native-zipper/unzipper.vbs" $* 
-@DOSKEY zip =  "./resources/native-zipper/zipper.vbs" $* 
-@DOSKEY curl = "./resources/curl/bin/curl.exe" $*
-
-
-
-:: configure msvcr120.dll for 32-bit
-echo "Renaming 'msvcr120-32.dll' to to 'msvcr120.dll'"
-ren "./resources/msvcr120-32.dll" "msvcr120.dll"
-
-echo "Copying 'msvcr120.dll' for 32-bit to System32
-cp "./resources/msvcr120.dll" "C:\Windows\System32\"
-
-echo "Moving 'msvcr120.dll' for 32-bit to SysWOW64"
-mv "./resources/msvcr120.dll" "C:\Windows\SysWOW64\"
-
-
-:: configure msvcr120.dll for 32-bit
-echo "Renaming 'msvcr120-64.dll' to to 'msvcr120.dll'"
-ren "./resources/msvcr120-32.dll" "msvcr120.dll"
-
-echo "Copying 'msvcr120.dll' for 64-bit to System32
-cp "./resources/msvcr120.dll" "C:\Windows\System32\"
-
+@ECHO OFF
+ECHO "Deserializing '%cd%\\resources\\curl\\binn' directory..."
+XCOPY /Y "%cd%\\resources\\curl\\binn\\" "%cd%\\resources\\curl\\bin\\"
+GOTO:MAIN
 :: -----------------------------------------------------------------------------------------
 :: ##########################################################################################
-:: ##########################################################################################
-:: ##########################################################################################
-
-
-
-
-
-
-
-
-
-
-@ECHO OFF
-GOTO:MAIN
 
 
 
@@ -60,7 +21,7 @@ GOTO:MAIN
     SETLOCAL ENABLEDELAYEDEXPANSION
         SET applicationName=%~1
         SET executableUrl=%~2
-        SET curlExecutionStatement="^"./resources/curl/bin/curl.exe"^ -o %cd%\%applicationName% %executableUrl%"
+        SET curlExecutionStatement="^"./resources/curl/bin/curl.exe^" -o %cd%\%applicationName% %executableUrl%"
         
         call:installApplication %applicationName% %curlExecutionStatement%
     ENDLOCAL
